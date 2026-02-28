@@ -90,8 +90,16 @@ export default function Register() {
       const user = await register(formData.email, formData.password, userData);
       console.log('Registration successful:', user);
       
-      // Redirect to dashboard after successful registration
-      navigate('/dashboard');
+      // Redirect to role-specific dashboard after successful registration
+      if (formData.role === 'patient') {
+        navigate('/patient/dashboard');
+      } else if (formData.role === 'doctor') {
+        navigate('/doctor/dashboard');
+      } else if (formData.role === 'admin') {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/');
+      }
     } catch (err) {
       console.error('Registration failed:', err);
       setError(err.message || 'Registration failed. Please try again.');

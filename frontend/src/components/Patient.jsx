@@ -12,7 +12,10 @@ function Patient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const activeView = "appointments";
+  // Determine active view based on current route
+  const activeView = location.pathname.includes("/patient/dashboard") 
+    ? "dashboard" 
+    : "appointments";
 
   const specializations = [
     "General Physician",
@@ -141,6 +144,13 @@ function Patient() {
         </aside>
 
         <main>
+          {activeView === "dashboard" && (
+            <div className="dashboard-view">
+              <h1>This is Dashboard</h1>
+              <p>Work is on going...</p>
+            </div>
+          )}
+
           {activeView === "appointments" && !selectedSpecialization && (
             <div className="appointment-booking">
               <h1>Book New Appointment</h1>

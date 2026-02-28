@@ -7,7 +7,6 @@ import { ProtectedRoute, RoleBasedRoute } from "./components/ProtectedRoute";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Dashboard from "./components/Dashboard";
 import Unauthorized from "./components/Unauthorized";
 
 // Role-specific components
@@ -24,16 +23,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Protected Routes */}
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
-
         {/* Role-Based Routes */}
         <Route
           path="/patient"
@@ -48,9 +37,22 @@ function App() {
             </RoleBasedRoute>
           }
         />
+        <Route
+          path="/patient/dashboard"
+          element={
+            <RoleBasedRoute allowedRoles={["patient"]}>
+              <Patient />
+            </RoleBasedRoute>
+          }
+        />
 
         <Route
           path="/doctor"
+          element={<Navigate to="/doctor/dashboard" replace />}
+        />
+
+        <Route
+          path="/doctor/dashboard"
           element={
             <RoleBasedRoute allowedRoles={["doctor"]}>
               <Doctor />
@@ -60,6 +62,11 @@ function App() {
 
         <Route
           path="/admin"
+          element={<Navigate to="/admin/dashboard" replace />}
+        />
+
+        <Route
+          path="/admin/dashboard"
           element={
             <RoleBasedRoute allowedRoles={["admin"]}>
               <Admin />

@@ -26,8 +26,16 @@ export default function Login() {
       const user = await login(email, password);
       console.log('Login successful:', user);
       
-      // Redirect based on user role (will be fetched from auth context)
-      navigate('/dashboard');
+      // Redirect based on user role
+      if (user.role === 'patient') {
+        navigate('/patient/dashboard');
+      } else if (user.role === 'doctor') {
+        navigate('/doctor/dashboard');
+      } else if (user.role === 'admin') {
+        navigate('/admin/dashboard');
+      } else {
+        navigate('/');
+      }
     } catch (err) {
       console.error('Login failed:', err);
       setError(err.message || 'Login failed. Please try again.');

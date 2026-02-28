@@ -9,14 +9,27 @@ const Home = () => {
   const { isAuthenticated, user } = useAuth();
   const navigate = useNavigate();
 
+  const getDashboardPath = () => {
+    switch (user?.role) {
+      case 'patient':
+        return '/patient/dashboard';
+      case 'doctor':
+        return '/doctor/dashboard';
+      case 'admin':
+        return '/admin/dashboard';
+      default:
+        return '/';
+    }
+  };
+
   const handleRoleClick = (role) => {
     if (!isAuthenticated) {
       // If not logged in, redirect to login page
       navigate('/login');
     } else {
-      // If logged in and role matches, navigate to dashboard
+      // If logged in and role matches, navigate to role-specific dashboard
       if (user?.role === role) {
-        navigate('/dashboard');
+        navigate(getDashboardPath());
       } else {
         // If logged in but role doesn't match, show unauthorized
         navigate('/unauthorized');
@@ -37,7 +50,7 @@ const Home = () => {
             <h2>Patient</h2>
             <p>Book appointments, view prescriptions, and track health records.</p>
             {isAuthenticated && user?.role === "patient" ? (
-              <NavLink to="/dashboard" className="nav-button">
+              <NavLink to="/patient/dashboard" className="nav-button">
                 Go to Dashboard
               </NavLink>
             ) : (
@@ -54,7 +67,7 @@ const Home = () => {
             <h2>Doctor</h2>
             <p>Manage patients, view schedules, and update medical records.</p>
             {isAuthenticated && user?.role === "doctor" ? (
-              <NavLink to="/dashboard" className="nav-button">
+              <NavLink to="/doctor/dashboard" className="nav-button">
                 Go to Dashboard
               </NavLink>
             ) : (
@@ -71,7 +84,7 @@ const Home = () => {
             <h2>Admin</h2>
             <p>Control hospital data, manage users, and oversee operations.</p>
             {isAuthenticated && user?.role === "admin" ? (
-              <NavLink to="/dashboard" className="nav-button">
+              <NavLink to="/admin/dashboard" className="nav-button">
                 Go to Dashboard
               </NavLink>
             ) : (

@@ -34,9 +34,6 @@ export default function Header() {
               )}
             </div>
             <span className="user-name">{user?.fullName}</span>
-            <button onClick={() => navigate('/dashboard')} className="btn-profile">
-              Dashboard
-            </button>
             <button onClick={handleLogout} className="btn-logout">
               Logout
             </button>
