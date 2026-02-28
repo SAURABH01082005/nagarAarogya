@@ -1,0 +1,25 @@
+/* Footer Styles */
+.footer-container {
+  padding: 0 40px;
+  margin: 0 auto;
+  background-color: var(--color-primary);
+}
+
+.footer-container hr {
+  border-color: #3d3d3d;
+  border-top: 1px solid #3d3d3d;
+  margin: 30px auto 0;
+  width: 80%;
+}
+
+.copyright-div p {
+  padding: 7px;
+}
+
+
+
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 0 10px;
+  }
+}

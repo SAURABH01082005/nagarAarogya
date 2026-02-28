@@ -1,0 +1,80 @@
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== Theme colors ===== */
+:root {
+  --color-primary: #1E1E1E;
+  --color-secondary: #5D84F9;
+  --color-bg: var(--color-primary);
+  --color-text: #ffffff;
+  --color-card: #2a2a2a;
+}
+
+/* ===== Layout ===== */
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* ===== Navbar ===== */
+@import "./header.css";
+
+/* ===== Main Area ===== */
+.main {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+/* ===== Sidebar ===== */
+aside {
+  width: 220px;
+  background: var(--color-card);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 15px;
+}
+
+aside a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+aside a:hover {
+  background: #3a3a3a;
+}
+
+/* ===== Content Area ===== */
+main {
+  flex: 1;
+  background: #ffffff;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+main h1 {
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+
+main p {
+  color: #555;
+}

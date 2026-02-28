@@ -1,0 +1,131 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-primary);
+  color: var(--color-text);
+  padding: 15px 25px;
+  height: 60px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header .logo {
+  cursor: pointer;
+}
+
+header .logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+header .logo img {
+  height: 50px;
+  transition: 0.3s;
+}
+
+header .logo a:hover img {
+  opacity: 0.8;
+}
+
+header .right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+header .user-name {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+header .right button,
+header .right a {
+  background: var(--color-secondary);
+  color: var(--color-text);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+header .right button:hover,
+header .right a:hover {
+  background: #4a73e0; /* slightly darker than secondary */
+}
+
+header .btn-profile {
+  /* already using secondary via .right button */
+}
+
+header .btn-logout {
+  /* logout can also use secondary or keep a warning color */
+  background: var(--color-secondary);
+}
+
+header .btn-logout:hover {
+  background: #4a73e0;
+}
+
+/* login/register use secondary via base rule */
+
+header .avatar {
+  width: 35px;
+  height: 35px;
+  background: var(--color-secondary);
+  color: var(--color-text);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+header .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+header .avatar {
+  width: 35px;
+  height: 35px;
+  background: #555;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px 15px;
+    height: auto;
+  }
+
+  header .logo img {
+    height: 45px;
+  }
+
+  header .right {
+    gap: 10px;
+  }
+
+  header .right button,
+  header .right a {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  header .user-name {
+    display: none;
+  }
+}
+  
