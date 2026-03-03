@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import connectDB from './config/db.js';
+import hospitalRouter from './routes/authGovernment.js';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/government', hospitalRouter);
 
 // Health check
 app.get('/health', (req, res) => {

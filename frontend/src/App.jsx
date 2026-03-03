@@ -30,6 +30,14 @@ function App() {
         />
 
         <Route
+          path="/patient/appointments/doc-specialities"
+          element={
+            <RoleBasedRoute allowedRoles={["patient"]}>
+              <Patient />
+            </RoleBasedRoute>
+          }
+        />
+        <Route
           path="/patient/appointments"
           element={
             <RoleBasedRoute allowedRoles={["patient"]}>
